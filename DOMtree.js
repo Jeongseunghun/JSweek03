@@ -8,12 +8,11 @@ const parser = input => {
   let curr, i = 0, j = input.length;
   while (curr = stack.pop()) {
     while (i < j) {
-      const cursor = i; // 헷갈리기 때문에 조회용으로 따로
+      const cursor = i;
       if (input[cursor] === '<') {
         const idx = input.indexOf('>', cursor);
         i = idx + 1;
         if (input[cursor + 1] === '/') {
-          // 닫는 태그
           curr = curr.back;
         } else {
           if (elementNode(input, cursor, idx, curr, stack))
